@@ -6,6 +6,7 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var gutil = require('gulp-util');
 var uglify = require('gulp-uglify');
+var terser = require('gulp-terser');
 var sourcemaps = require('gulp-sourcemaps');
 var header = require('gulp-header');
 var pkg = require('./package.json');
@@ -65,7 +66,7 @@ function build(file, output) {
         .pipe(header(banner, {pkg: pkg}))
         .pipe(gulp.dest('./dist'))
         .pipe(rename({extname: '.min.js'}))
-        .pipe(uglify())
+        .pipe(terser())
         .pipe(header(banner, {pkg: pkg}))
         .pipe(gulp.dest('./dist'));
 }

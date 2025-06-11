@@ -54,6 +54,7 @@
         };
 
         that.set = function (newDataSet, init) {
+            console.log('version overload', newDataSet);
             if (!_.isEqual(dataSet, newDataSet)) {
                 if(!init){
                     mediator.trigger('backup', _.cloneDeep(dataSet));
